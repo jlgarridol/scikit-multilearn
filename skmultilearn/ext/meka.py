@@ -265,6 +265,14 @@ class Meka(MLClassifierBase):
 
         return self
 
+    def save(self, route):
+        with open(route, 'wb') as fp:
+            fp.write(self.classifier_dump)
+
+    def load(self, route):
+        with open(route, 'rb') as fp:
+            self.classifier_dump = fp.read()
+
     def predict(self, X):
         """Predict label assignments for X
 
@@ -424,11 +432,11 @@ class Meka(MLClassifierBase):
             self.meka_classifier,
         ]
 
-        if self.weka_classifier is not None:
-            command_args += ['-W', self.weka_classifier]
-
         command_args += args
 
+        if self.weka_classifier is not None:
+            command_args += ['-W', self.weka_classifier]
+       
         meka_command = " ".join(command_args)
 
         if sys.platform != 'win32':
