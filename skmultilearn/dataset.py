@@ -247,7 +247,7 @@ def load_from_arff(filename, label_count, label_location="end",
         return X, y
 
 
-def save_to_arff(X, y, label_location="end", save_sparse=True, filename=None):
+def save_to_arff(X, y, label_location="start", save_sparse=False, filename=None):
     """Method for dumping data to ARFF files
 
     Parameters

@@ -436,7 +436,7 @@ class Meka(MLClassifierBase):
 
         if self.weka_classifier is not None:
             command_args += ['-W', self.weka_classifier]
-       
+
         meka_command = " ".join(command_args)
 
         if sys.platform != 'win32':
